@@ -12,7 +12,7 @@ namespace DataAccesLayer.concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("");
+            optionsBuilder.UseSqlServer("Server=LAPTOP-I0QS5ARU;initial Catalog=CoreDb;integrated Security=true;TrustServerCertificate=True");
             
         }
         public DbSet<About> Abouts { get; set; }

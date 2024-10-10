@@ -6,10 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccesLayer.abstracct
-{
-    public interface IcategoryDal:IGenericDal<Category>
+{ 
+    public interface IContactDal:IGenericDal<Contact>
     {
-
-
     }
 }

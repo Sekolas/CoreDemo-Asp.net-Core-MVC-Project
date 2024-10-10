@@ -7,14 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.abstracct
 {
-    public interface IBlogDal
+    public interface IBlogDal:IGenericDal<Blog>
     {
-        List<Blog> ListAllCategory();
-        void AddBlog(Blog blog);
-        void DeleteBlog(Blog blog);
 
-        void DeletUpdateBlog(Blog blog);
-
-        Blog GetbyId(int id);
     }
 }
