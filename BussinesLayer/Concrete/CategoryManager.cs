@@ -33,6 +33,7 @@ namespace BussinesLayer.Concrete
         public Category GetCategory(int id)
         {
             return _categoryDal.GetById(id);
+            
         }
 
         public void RemoveCategory(Category category)

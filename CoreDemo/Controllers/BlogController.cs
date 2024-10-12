@@ -9,6 +9,7 @@ namespace CoreDemo.Controllers
 		BlogManager bm = new BlogManager(new EfBlogRepository());
 		public IActionResult Index()
         {
+            
             var values=bm.GetList();
             return View(values);
         }

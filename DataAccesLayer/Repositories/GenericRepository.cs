@@ -22,7 +22,7 @@ namespace DataAccesLayer.Repositories
             return c.Set<T>().Find(id);
         }
 
-        public List<T> GetListAll()
+        public List<T?> GetListAll()
         {
             return c.Set<T>().ToList();
         }
