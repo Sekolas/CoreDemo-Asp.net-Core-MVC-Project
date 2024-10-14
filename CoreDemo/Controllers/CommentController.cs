@@ -18,7 +18,7 @@ namespace CoreDemo.Controllers
 			return PartialView();
 		}
 
-		public PartialViewResult CommenListByBlock(int id)
+		public PartialViewResult CommentListByBlock(int id)
 		{
 			var values = cm.Getlist(id);
 			return PartialView(values);
