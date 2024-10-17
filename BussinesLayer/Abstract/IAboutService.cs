@@ -1,5 +1,4 @@
 ﻿using DataAccesLayer.abstracct;
-using DataAccesLayer.Repositories;
 using EntityLayer.concrete;
 using System;
 using System.Collections.Generic;
@@ -7,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccesLayer.EntityFramework
+namespace BussinesLayer.Abstract
 {
-    public class EfWriterRepository:GenericRepository<Writer>,IWriterDal
+    public interface IAboutService
     {
+        List<About> Getlist();
 
     }
 }

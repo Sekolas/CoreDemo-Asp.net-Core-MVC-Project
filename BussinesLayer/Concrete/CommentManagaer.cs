@@ -18,9 +18,9 @@ namespace BussinesLayer.Concrete
 			_commendtdal = commentdal;
             
         }
-        public void AddComment(Comment category)
+        public void AddComment(Comment comment)
 		{
-			
+			_commendtdal.Insert(comment);
 		}
 
 		public List<Comment> Getlist(int id)

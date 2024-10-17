@@ -1,0 +1,11 @@
+﻿@model NewsLetter
+
+<div class="tech-btm">
+	<h4>Mail Bültenine abone olun</h4>
+	<p>Son blogları takip edin </p>
+	<form asp-controller="NewsLetter" asp-action="SubscribeMail" method="post">
+		<input type="email" placeholder="Email" required="" asp-for="Mail">
+		<input type="submit" value="Subscribe">
+	</form>
+
+</div>
