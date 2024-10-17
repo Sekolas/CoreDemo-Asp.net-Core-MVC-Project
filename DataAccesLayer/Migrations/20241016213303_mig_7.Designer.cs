@@ -4,6 +4,7 @@ using DataAccesLayer.concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccesLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20241016213303_mig_7")]
+    partial class mig_7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,9 +160,14 @@ namespace DataAccesLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("WriterID")
+                        .HasColumnType("int");
+
                     b.HasKey("CommentID");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("WriterID");
 
                     b.ToTable("Comment");
                 });
@@ -197,26 +205,6 @@ namespace DataAccesLayer.Migrations
                     b.HasKey("ContactID");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("EntityLayer.concrete.NewsLetter", b =>
-                {
-                    b.Property<int>("MailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MailId"));
-
-                    b.Property<string>("Mail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("MailStatus")
-                        .HasColumnType("bit");
-
-                    b.HasKey("MailId");
-
-                    b.ToTable("NewsLetters");
                 });
 
             modelBuilder.Entity("EntityLayer.concrete.Writer", b =>
@@ -264,7 +252,7 @@ namespace DataAccesLayer.Migrations
                         .IsRequired();
 
                     b.HasOne("EntityLayer.concrete.Writer", "writer")
-                        .WithMany("Blogs")
+                        .WithMany()
                         .HasForeignKey("WriterID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -282,6 +270,10 @@ namespace DataAccesLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EntityLayer.concrete.Writer", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("WriterID");
+
                     b.Navigation("Blog");
                 });
 
@@ -297,7 +289,7 @@ namespace DataAccesLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.concrete.Writer", b =>
                 {
-                    b.Navigation("Blogs");
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

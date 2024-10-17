@@ -12,7 +12,7 @@ namespace EntityLayer.concrete
         [Key]
         public int WriterID{ get; set; }
 
-        public int WriterName { get; set; }
+        public string WriterName { get; set; }
 
         public string writerImage { get; set; }
 
@@ -20,7 +20,8 @@ namespace EntityLayer.concrete
         public bool WriterStatus { get; set; }
         public string WriterMail { get; set; }
         public string WriterPassword{ get; set; }
+		public List<Blog> Blogs { get; set; }
 
 
-    }
+	}
 }

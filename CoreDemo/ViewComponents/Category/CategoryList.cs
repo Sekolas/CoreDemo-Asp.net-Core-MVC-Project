@@ -14,6 +14,6 @@ namespace CoreDemo.ViewComponents.Category
 			return View(values);
 		}
 
-
+		 
 	}
 }
