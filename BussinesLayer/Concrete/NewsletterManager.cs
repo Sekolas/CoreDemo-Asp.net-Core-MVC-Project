@@ -13,12 +13,12 @@ namespace BussinesLayer.Concrete
     public class NewsletterManager : InewsletterService
     {
 
-        INewsletterdal _ınewsletterdal;
+        INewsletterdal _newsletterdal;
         private EfNewsletterRepository efNewsletterRepository;
 
         public NewsletterManager(INewsletterdal newsletterdal)
         {
-            _ınewsletterdal = newsletterdal;
+            _newsletterdal = newsletterdal;
             
         }
 
@@ -30,7 +30,7 @@ namespace BussinesLayer.Concrete
         public void AddNewsLetter(NewsLetter newsLetter)
         {
 
-            _ınewsletterdal.Insert(newsLetter);  
+            _newsletterdal.Insert(newsLetter);  
 
         }
     }

@@ -1,10 +1,7 @@
-﻿<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
+﻿@{
+	ViewData["Title"] = "BlogDetails";
+	Layout = "~/Views/Shared/UserLayout.cshtml";
+}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -20,7 +17,7 @@
 		<div class="contact-map inner-sec">
 
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1472190196783"
-			    class="map" style="border:0" allowfullscreen=""></iframe>
+					class="map" style="border:0" allowfullscreen=""></iframe>
 		</div>
 		<div class="ad-inf-sec bg-light">
 			<div class="container">
@@ -33,7 +30,8 @@
 							</div>
 							<div class="col-md-8 address-right text-left">
 								<h6>Address</h6>
-								<p> California, USA
+								<p>
+									California, USA
 
 								</p>
 							</div>
@@ -47,7 +45,8 @@
 							</div>
 							<div class="col-md-8 address-right text-left">
 								<h6>Email</h6>
-								<p>Email :
+								<p>
+									Email :
 									<a href="mailto:example@email.com"> mail@example.com</a>
 
 								</p>
@@ -73,26 +72,26 @@
 		</div>
 		<div class="container">
 			<div class="contact_grid_right">
-				<form action="#" method="post">
+				<form asp-controller="Contact" asp-action="Index" method="post">
 					<div class="row contact_left_grid">
 						<div class="col-md-6 con-left">
 							<div class="form-group">
 								<label for="validationCustom01 my-2">Name</label>
-								<input class="form-control" type="text" name="Name" placeholder="" required="">
+								<input class="form-control" type="text" name="ContactUserName" placeholder="" required="">
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlInput1">Email</label>
-								<input class="form-control" type="email" name="Email" placeholder="" required="">
+								<input class="form-control" type="email" name="ContactMail" placeholder="" required="">
 							</div>
 							<div class="form-group">
 								<label for="validationCustom03 my-2">Subject</label>
-								<input class="form-control" type="text" name="Subject" placeholder="" required="">
+								<input class="form-control" type="text" name="ContactSubject" placeholder="" required="">
 							</div>
 						</div>
 						<div class="col-md-6 con-right">
 							<div class="form-group">
 								<label for="textarea">Message</label>
-								<textarea id="textarea" placeholder=""></textarea>
+								<textarea name="ContactMessage" id="textarea" placeholder=""></textarea>
 							</div>
 							<input class="form-control" type="submit" value="Submit">
 

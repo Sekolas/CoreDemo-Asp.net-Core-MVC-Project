@@ -10,8 +10,8 @@ namespace CoreDemo.Controllers
 		public IActionResult Index()
 		{
             var values = ab.Getlist();
-            return PartialView(values);
-            return View();
+            
+            return View(values);
 		}
 
 		

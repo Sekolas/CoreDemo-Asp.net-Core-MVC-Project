@@ -1,11 +1,32 @@
-﻿@model NewsLetter
-
+﻿<!-- Ensure you have included jQuery in your project -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="tech-btm">
-	<h4>Mail Bültenine abone olun</h4>
-	<p>Son blogları takip edin </p>
-	<form asp-controller="NewsLetter" asp-action="SubscribeMail" method="post">
-		<input type="email" placeholder="Email" required="" asp-for="Mail">
-		<input type="submit" value="Subscribe">
-	</form>
+    <form id="newsletterForm">
+        <input type="email" placeholder="Email" required="" name="Mail" id="emailInput">
+        <input id="btn" type="submit" value="Subscribe">
+    </form>
 
+    <script>
+        $(document).ready(function () {
+            $('#newsletterForm').on('submit', function (e) {
+                e.preventDefault(); // Prevent the form from submitting via the browser
+
+                var email = $('#emailInput').val();
+
+                $.ajax({
+                    url: '/NewsLetter/SubscribeMail',  // URL to your controller/action
+                    type: 'POST',
+                    data: { Mail: email },             // Data to send to the server
+                    success: function (response) {
+                        // Handle success - You can show a success message here
+                        alert('Subscription successful!');
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error - You can show an error message here
+                        alert('Subscription failed: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
 </div>
