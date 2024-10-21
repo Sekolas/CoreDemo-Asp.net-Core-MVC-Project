@@ -45,7 +45,12 @@ namespace BussinesLayer.Concrete
 		public List<Blog> GetList()
 		{
 			return _blogdal.GetListAll();
-		}  
+		}
+
+		public List<Blog> GetLast3Blog()
+		{
+			return _blogdal.GetListAll().Take(3).ToList();
+		}
 
 		public void RemoveBlog(Blog category)
 		{

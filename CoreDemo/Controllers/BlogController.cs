@@ -1,9 +1,11 @@
 ﻿using BussinesLayer.Concrete;
 using DataAccesLayer.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
+	[AllowAnonymous]
 	public class BlogController : Controller
 	{
 		BlogManager bm = new BlogManager(new EfBlogRepository());
@@ -19,5 +21,6 @@ namespace CoreDemo.Controllers
 			var values = bm.GetBlogById(id);
 			return View(values);
 		}
+
 	}
 }

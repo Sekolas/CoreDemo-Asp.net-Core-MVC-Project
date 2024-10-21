@@ -2,7 +2,7 @@
 
 namespace CoreDemo.Controllers
 {
-	public class LoginContoller : Controller
+	public class blablaController : Controller
 	{
 		public IActionResult Index()
 		{

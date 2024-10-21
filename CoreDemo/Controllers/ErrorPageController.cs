@@ -2,7 +2,7 @@
 
 namespace CoreDemo.Controllers
 {
-	public class ErrorPageController1 : Controller
+	public class ErrorPageController : Controller
 	{
 		public IActionResult Error1(int code)
 		{
