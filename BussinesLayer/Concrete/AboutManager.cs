@@ -18,10 +18,31 @@ namespace BussinesLayer.Concrete
             _aboutdal = aboutdal;
             
         }
-        public List<About> Getlist()
+
+        public List<About> GetAll()
         {
-           return  _aboutdal.GetListAll();        }
+            return _aboutdal.GetListAll();
+        }
+
+        public About GetbyId(int id)
+        {
+            throw new NotImplementedException();
+        }
 
 
+        public void TAdd(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TRemove(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(About t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

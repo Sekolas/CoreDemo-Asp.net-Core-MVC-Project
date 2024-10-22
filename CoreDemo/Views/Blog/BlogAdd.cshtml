@@ -1,0 +1,98 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Entry Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .custom-header {
+            background: linear-gradient(45deg, #ff69b4, #4169E1) !important;
+        }
+
+        .btn-custom-pink {
+            background-color: #ff69b4 !important;
+            border-color: #ff69b4 !important;
+            color: white !important;
+        }
+
+            .btn-custom-pink:hover {
+                background-color: #ff5ca8 !important;
+                border-color: #ff5ca8 !important;
+            }
+
+        .btn-custom-blue {
+            background-color: #4169E1 !important;
+            border-color: #4169E1 !important;
+            color: white !important;
+        }
+
+            .btn-custom-blue:hover {
+                background-color: #3a5ecc !important;
+                border-color: #3a5ecc !important;
+            }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #ff69b4 !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25) !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-10">
+                <div class="card shadow">
+                    <div class="card-header custom-header text-white">
+                        <h3 class="mb-0">Create New Blog Post</h3>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="BlogAdd" asp-controller="Blog" method="post">
+                            <div class="mb-3">
+                                <label for="blogTitle" class="form-label">Blog Title</label>
+                                <input type="text" class="form-control" id="blogTitle" required>
+                                
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="blogImage" class="form-label">Blog Image</label>
+                                <input type="file" class="form-control" id="blogImage" accept="image/*">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="blogContent" class="form-label">Blog Content</label>
+                                <textarea class="form-control" id="blogContent" rows="6" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" id="category" required>
+                                    <option value="" selected disabled>Select a category</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="lifestyle">Lifestyle</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="food">Food</option>
+                                    <option value="health">Health</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-custom-pink">Publish Post</button>
+                                <button type="reset" class="btn btn-custom-blue">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

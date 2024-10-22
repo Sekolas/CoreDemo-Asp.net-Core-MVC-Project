@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Abstract
 {
-    public interface IAboutService
+    public interface IAboutService:IgenericService<About>
     {
-        List<About> Getlist();
 
     }
 }

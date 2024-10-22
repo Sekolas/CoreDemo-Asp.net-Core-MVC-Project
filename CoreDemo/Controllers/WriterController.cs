@@ -3,23 +3,40 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
-   
+    [AllowAnonymous]
     public class WriterController : Controller
     {
-        [AllowAnonymous]
+
         public IActionResult Index()
         {
             return View();
         }
-		[AllowAnonymous]
-		public IActionResult WriterProfile()
+
+        public IActionResult WriterProfile()
         {
             return View();
         }
-		[AllowAnonymous]
-		public IActionResult WriterMail()
+
+        public IActionResult WriterMail()
         {
             return View();
+        }
+
+        public IActionResult Test()
+        {
+            return View();
+        }
+        public PartialViewResult writernavbar()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult footerPartial()
+        {
+            {
+                return PartialView();
+            }
         }
     }
 }
+

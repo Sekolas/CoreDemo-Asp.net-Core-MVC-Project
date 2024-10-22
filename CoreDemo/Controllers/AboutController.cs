@@ -9,7 +9,7 @@ namespace CoreDemo.Controllers
 		AboutManager ab=new AboutManager(new EfAboutRepository());
 		public IActionResult Index()
 		{
-            var values = ab.Getlist();
+            var values = ab.GetAll();
             
             return View(values);
 		}

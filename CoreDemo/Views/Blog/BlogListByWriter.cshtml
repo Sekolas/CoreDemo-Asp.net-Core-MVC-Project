@@ -1,0 +1,84 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazarın Blogları</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf8fa;
+            padding: 20px;
+        }
+
+        .table {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .btn-delete {
+            background-color: #ff7b89;
+            border: none;
+            color: white;
+            padding: 6px 24px;
+            border-radius: 4px;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            border: none;
+            color: white;
+            padding: 6px 24px;
+            border-radius: 4px;
+        }
+
+        .status-true {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Yazarın Blogları</h2>
+        <div class="table-responsive">
+            
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Blog Başlığı</th>
+                            <th>Oluşturma Tarihi</th>
+                            <th>Kategori</th>
+                            <th>Durum</th>
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model){
+                        <tr>
+                            <td>@item.BlogId</td>
+                            <td>@item.BlogTitle</td>
+                            <td>@item.BlogCreateDate</td>
+                            <td>@item.CategoryId</td>
+                            <td class="status-true">@item.BlogStatus</td>
+                            <td><button class="btn-delete">Sil</button></td>
+                            <td><button class="btn-edit">Düzenle</button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            
+        </div>
+            
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

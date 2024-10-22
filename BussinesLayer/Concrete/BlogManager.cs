@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Concrete
 {
-	public class BlogManager : IBlogService
+    public class BlogManager : IBlogService
 	{
 		IBlogDal _blogdal;
 
@@ -17,49 +17,49 @@ namespace BussinesLayer.Concrete
         {
             _blogdal=blogdal;
         }
-        public void AddBlog(Blog category)
-		{
-			throw new NotImplementedException();
-		}
 
-		public void BlogUpdate(Blog category)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Blog> GetAll()
+        {
+            return _blogdal.GetListAll();
+        }
 
         public List<Blog> GetBlockWithCategory()
         {
             return _blogdal.GetListWithCategory();
         }
 
-        public Blog GetById(int id)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Blog> GetBlogListByWriter(int id)
+        {
+            return _blogdal.GetListAll(x => x.WriterID == id);
+        }
 
-		public List<Blog> GetBlogById(int id)
-		{
-			return _blogdal.GetListAll(x=>x.BlogId==id);
-		}
+        public Blog GetbyId(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-		public List<Blog> GetList()
-		{
-			return _blogdal.GetListAll();
-		}
+        public void TAdd(Blog t)
+        {
+            _blogdal.Insert(t);
+        }
 
-		public List<Blog> GetLast3Blog()
-		{
-			return _blogdal.GetListAll().Take(3).ToList();
-		}
+        public void TRemove(Blog t)
+        {
+            throw new NotImplementedException();
+        }
 
-		public void RemoveBlog(Blog category)
-		{
-			throw new NotImplementedException();
-		}
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Blog> GetLast3Blog()
+        {
+            return _blogdal.GetListAll().Take(3).ToList();
+        }
 
-		public List<Blog> GetBlogListByWriter(int id)
-		{
-			return _blogdal.GetListAll(x => x.WriterID==id);
-		}
-	}
+        public List<Blog> GetBlogById(int id)
+        {
+            return _blogdal.GetListAll(x => x.BlogId == id);
+        }
+    }
 }

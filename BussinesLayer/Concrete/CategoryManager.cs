@@ -9,36 +9,35 @@ namespace BussinesLayer.Concrete
     {
         IcategoryDal _categoryDal;
 
-        public CategoryManager(IcategoryDal categoryDal)
+        public CategoryManager(IcategoryDal categorydal)
         {
-            _categoryDal = categoryDal;
-            
-        }
-        public void AddCategory(Category category)
-        {
-            _categoryDal.Insert(category);
-
-        }
-
-        public void CategoryUpdate(Category category)
-        {
-            _categoryDal.Update(category);
-        }
-
-        public List<Category> GetAllCategories()
-        {
-            return _categoryDal.GetListAll();
-        }
-
-        public Category GetCategory(int id)
-        {
-            return _categoryDal.GetById(id);
+            _categoryDal = categorydal;
             
         }
 
-        public void RemoveCategory(Category category)
+        public List<Category> GetAll()
         {
-            _categoryDal.Delete(category);
+           return _categoryDal.GetListAll();
+        }
+
+        public Category GetbyId(int id)
+        {
+           return _categoryDal.GetById(id);
+        }
+
+        public void TAdd(Category t)
+        {
+            _categoryDal.Insert(t);
+        }
+
+        public void TRemove(Category t)
+        {
+            _categoryDal.Delete(t);
+        }
+
+        public void Update(Category t)
+        {
+           _categoryDal.Update(t);
         }
     }
 }
