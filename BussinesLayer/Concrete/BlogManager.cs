@@ -27,15 +27,19 @@ namespace BussinesLayer.Concrete
         {
             return _blogdal.GetListWithCategory();
         }
+        public List<Blog> Test(int id)
+        {
+            return _blogdal.GetListWithoutCategoryByWriter(id);
+        }
 
         public List<Blog> GetBlogListByWriter(int id)
         {
             return _blogdal.GetListAll(x => x.WriterID == id);
         }
 
-        public Blog GetbyId(int id)
+        public Blog TGetbyId(int id)
         {
-            throw new NotImplementedException();
+            return _blogdal.GetById(id);
         }
 
         public void TAdd(Blog t)
@@ -45,7 +49,7 @@ namespace BussinesLayer.Concrete
 
         public void TRemove(Blog t)
         {
-            throw new NotImplementedException();
+            _blogdal.Delete(t);
         }
 
         public void Update(Blog t)

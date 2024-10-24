@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoreDemo.Controllers
 {
@@ -28,13 +29,19 @@ namespace CoreDemo.Controllers
 
 		public IActionResult BlogListByWriter()
 		{
-			var values=bm.GetBlogListByWriter(2);
+			var values=bm.Test(2);
 			return View(values);
 		}
 		[HttpGet]
         public IActionResult BlogAdd()
         {
-			return View();
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categoryvalues=(from x in cm.GetAll() select new SelectListItem
+            {
+                    Text=x.CategoryName,
+                    Value=x.CategoryId.ToString()
+            }).ToList();
+			return View(categoryvalues);
         }
 
         [HttpPost]
@@ -61,8 +68,28 @@ namespace CoreDemo.Controllers
                 }
             }
 
+
             return View();
         }
+        public IActionResult BlogDelete(int id) {
+            var blogvalue=bm.TGetbyId(id);
+            bm.TRemove(blogvalue);
+            return RedirectToAction("BlogListByWriter");
+
+        }
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogvalue = bm.TGetbyId(id);
+            return View(blogvalue);
+
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog p)
+        {
+            return View();
+        }
+
 
     }
 }

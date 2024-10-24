@@ -61,19 +61,30 @@
                             <th>Düzenle</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach (var item in Model){
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
                             <td>@item.BlogId</td>
                             <td>@item.BlogTitle</td>
                             <td>@item.BlogCreateDate</td>
-                            <td>@item.CategoryId</td>
+                            <td>@item.Category.CategoryName</td> <!-- CategoryName ekliyoruz -->
                             <td class="status-true">@item.BlogStatus</td>
-                            <td><button class="btn-delete">Sil</button></td>
-                            <td><button class="btn-edit">Düzenle</button></td>
+                            <td>
+                                <!-- Silme butonu ile form -->
+                                <form asp-action="BlogDelete" method="post">
+                                    <input type="hidden" name="id" value="@item.BlogId" />
+                                    <button type="submit" class="btn-delete">Sil</button>
+                                </form>
+                            </td>
+                            <td>
+                                <!-- Düzenleme butonu -->
+                                <a asp-action="EditBlog"  asp-route-id="@item.BlogId" class="btn-edit">Düzenle</a>
+                            </td>
                         </tr>
-                        }
-                    </tbody>
+                    }
+                </tbody>
+
                 </table>
             
         </div>

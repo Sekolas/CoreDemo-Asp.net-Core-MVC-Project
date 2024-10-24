@@ -24,7 +24,7 @@ namespace BussinesLayer.Concrete
             return _aboutdal.GetListAll();
         }
 
-        public About GetbyId(int id)
+        public About TGetbyId(int id)
         {
             throw new NotImplementedException();
         }

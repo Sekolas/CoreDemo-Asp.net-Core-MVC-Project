@@ -1,8 +1,9 @@
-﻿@model List<SelectListItem>
+﻿@model List<Blog>
 @{
-    ViewData["Title"] = "BlogAdd";
+    ViewData["Title"] = "EditBlog";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +53,11 @@
                         <h3 class="mb-0">Create New Blog Post</h3>
                     </div>
                     <div class="card-body">
-                        <form asp-action="BlogAdd" asp-controller="Blog" method="post">
+                        <form asp-action="EditBlog" asp-controller="Blog" method="post">
                             <div class="mb-3">
                                 <label for="blogTitle" class="form-label">Blog Title</label>
                                 <input type="text" class="form-control" id="blogTitle" name="BlogTitle" required>
-                                
+
                             </div>
 
                             <div class="mb-3">
@@ -76,12 +77,12 @@
 
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category</label>
-                                
+
                                 <select name="CategoryId" class="form-select" id="category" required>
                                     <option value="" selected disabled>Seçiniz</option>
                                     @foreach (var item in Model)
                                     {
-                                        <option value="@item.Value">@item.Text</option>
+                                        <option value="@item.Category.CategoryId">@item.Category.CategoryName</option>
                                     }
                                 </select>
                             </div>
