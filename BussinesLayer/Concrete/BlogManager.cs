@@ -54,7 +54,7 @@ namespace BussinesLayer.Concrete
 
         public void Update(Blog t)
         {
-            throw new NotImplementedException();
+           _blogdal.Update(t);
         }
         public List<Blog> GetLast3Blog()
         {

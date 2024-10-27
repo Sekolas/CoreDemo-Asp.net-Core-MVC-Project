@@ -14,6 +14,8 @@ namespace CoreDemo.Controllers
 	public class BlogController : Controller
 	{
 		BlogManager bm = new BlogManager(new EfBlogRepository());
+
+        CategoryManager cm=new CategoryManager(new EfCategoryRepository());
 		public IActionResult Index()
 		{
 
@@ -80,14 +82,28 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult EditBlog(int id)
         {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categoryvalues=(from x in cm.GetAll() select new SelectListItem
+            {
+                    Text=x.CategoryName,
+                    Value=x.CategoryId.ToString()
+            }).ToList();
             var blogvalue = bm.TGetbyId(id);
+            ViewBag.Categories=categoryvalues;
+            
+
             return View(blogvalue);
 
         }
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            return View();
+
+            p.WriterID = 2;
+            p.BlogStatus=true;
+            p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString()).ToString();
+            bm.Update(p);
+            return RedirectToAction("BlogListByWriter", "Blog");
         }
 
 
