@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Concrete
 {
-	public class WriterManager : IwriterService
+    public class WriterManager : IwriterService
 	{
 		IWriterDal _writerdal;
 
@@ -18,9 +18,38 @@ namespace BussinesLayer.Concrete
 			_writerdal = writerDal;
 
 		}
-		public void WriterAdd(Writer writer)
-		{
-			_writerdal.Insert(writer);
-		}
+
+        public List<Writer> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Writer> GetWriterById(int id)
+        {
+            return _writerdal.GetListAll(x => x.WriterID == id);
+        }
+
+        public void TAdd(Writer t)
+        {
+            _writerdal.Insert(t);
+        }
+
+        public Writer TGetbyId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TRemove(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
 	}
 }
