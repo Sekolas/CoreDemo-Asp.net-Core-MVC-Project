@@ -4,6 +4,7 @@ using DataAccesLayer.concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccesLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20241102122627_mig_notification")]
+    partial class mig_notification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,9 +259,6 @@ namespace DataAccesLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("NotificaitonStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("NotificationColor")
                         .HasColumnType("bit");
 
                     b.Property<string>("NotificationDetails")

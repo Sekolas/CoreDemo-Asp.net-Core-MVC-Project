@@ -36,7 +36,7 @@ namespace BussinesLayer.Concrete
 
         public Writer TGetbyId(int id)
         {
-            throw new NotImplementedException();
+            return _writerdal.GetById(id);
         }
 
         public void TRemove(Writer t)

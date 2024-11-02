@@ -6,11 +6,13 @@ namespace CoreDemo.ViewComponents.writer
 {
     public class WriterNotification:ViewComponent
     {
-        CommentManagaer cm = new CommentManagaer(new EfCommentRepository());
 
+        NotificationManager nm = new NotificationManager(new EfNoticitaionRepository());
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = nm.GetAll();
+
+            return View(values);
         }
     }
 }

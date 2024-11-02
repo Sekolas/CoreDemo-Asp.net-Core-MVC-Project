@@ -1,0 +1,40 @@
+﻿@model Writer
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Basic form elements</h4>
+            <p class="card-description">Yazar Profil Bilgileri Düzenleme </p>
+            <form class="forms-sample" asp-action="EditProfile" asp-controller="Writer" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" class="form-control" id="WriterName" value="@Model.WriterName" name="WriterName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Email</label>
+                    <input type="email" class="form-control" id="WriterMail" value="@Model.WriterMail" name="WriterMail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Şifre</label>
+                    <input type="password" class="form-control" name="WriterPassword" id="WriterPassword" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="blogImage" class="form-label">Blog Image</label>
+                    <input type="file" class="form-control" id="blogImage" name="writerImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Yazar Hakkında</label>
+                    <textarea class="form-control" id="WriterAbout" name="WriterAbout" rows="4">@Model.WriterAbout</textarea>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                <button class="btn btn-light">İptal</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
