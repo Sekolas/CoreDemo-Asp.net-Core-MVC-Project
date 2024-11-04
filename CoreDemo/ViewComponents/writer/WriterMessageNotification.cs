@@ -6,11 +6,14 @@ namespace CoreDemo.ViewComponents.writer
 {
     public class WriterMessageNotification:ViewComponent
     {
-        CommentManagaer cm = new CommentManagaer(new EfCommentRepository());
-
+        
+        MessageManager messageManager = new MessageManager(new EfMessageRepository());
         public IViewComponentResult Invoke()
         {
-            return View();
+            string p;
+            p = "seko@gmail.com";
+            var values = messageManager.GetInboxWithByWriter(p);
+            return View(values);
         }
     }
 }

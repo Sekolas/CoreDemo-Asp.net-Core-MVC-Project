@@ -15,6 +15,11 @@ namespace DataAccesLayer.concrete
             optionsBuilder.UseSqlServer("Server=LAPTOP-I0QS5ARU;initial Catalog=CoreDb;integrated Security=true;TrustServerCertificate=True");
             
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+        }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -23,6 +28,8 @@ namespace DataAccesLayer.concrete
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages{ get; set; }
+
 
 
 
