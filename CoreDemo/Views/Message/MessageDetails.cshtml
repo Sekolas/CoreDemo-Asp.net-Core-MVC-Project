@@ -1,72 +1,54 @@
-﻿@model List<Mesajlar>
+﻿@model Mesajlar
 
 @{
-	ViewData["Title"] = "BlogListByWriter";
-	Layout = "~/Views/Shared/WriterLayout.cshtml";
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-<html lang="en">
-<!-- head bölümü aynı kalacak -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesaj Detay Sayfası</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body class="bg-light">
-	<div class="container-fluid mt-5">
-		<div class="row justify-content-center">
-			<div class="col-md-10 col-lg-10">
-				<div class="card shadow">
-					<div class="card-header custom-header text-white">
-						<h3 class="mb-0">Mesaj Detay Sayfası</h3>
-					</div>
-					<div class="card-body">
-						<form >
-							<!-- Gizli BlogId alanı -->
-							<input type="hidden" name="BlogId" value="@Model.BlogId" />
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h2 class="card-title mb-0">Mesaj Detay Sayfası</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-4">
+                                <label for="messageId" class="form-label text-muted">Mesaj ID</label>
+                                <input type="text" class="form-control" id="messageId" value="@Model.MessageID" readonly>
+                            </div>
 
-							<div class="mb-3">
-								<label for="blogTitle" class="form-label">Blog Başlığı</label>
-								<input type="text" class="form-control" id="blogTitle" value="@Model.BlogTitle" name="BlogTitle">
-							</div>
+                            <div class="mb-4">
+                                <label for="subject" class="form-label text-muted">Mesaj Başlığı</label>
+                                <input type="text" class="form-control" id="subject" value="@Model.Subject" readonly>
+                            </div>
 
-							<div class="mb-3">
-								<label for="blogImage" class="form-label">Blog Image</label>
-								<input type="text" class="form-control" id="blogImage" value="@Model.BlogImage" name="BlogImage">
-							</div>
+                            <div class="mb-4">
+                                <label for="messageDetails" class="form-label text-muted">Mesaj İçeriği</label>
+                                <textarea class="form-control" id="messageDetails" rows="5" readonly>@Model.MessageDetails</textarea>
+                            </div>
 
-							<div class="mb-3">
-								<label for="thumbnailImage" class="form-label">Blog Thumbnail Image</label>
-								<input type="text" class="form-control" id="thumbnailImage" value="@Model.BlogThumbnailImage" name="BlogThumbnailImage">
-							</div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                <button type="button" class="btn btn-info text-white px-4">
+                                    Mesajlara Dön
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-							<div class="mb-3">
-								<label for="blogContent" class="form-label">Blog Content</label>
-								<textarea class="form-control" id="blogContent" name="BlogContent" rows="6">@Model.BlogContent</textarea>
-							</div>
-
-							<div class="mb-3">
-								<label for="category" class="form-label">Category</label>
-								<select name="CategoryId" class="form-select" id="category">
-									<option value="">Seçiniz</option>
-									@foreach (var item in ViewBag.Categories)
-									{
-										@if (Model.CategoryId.ToString() == item.Value)
-										{
-											<option value="@item.Value" selected>@item.Text</option>
-										}
-										else
-										{
-											<option value="@item.Value">@item.Text</option>
-										}
-									}
-								</select>
-							</div>
-
-							<div class="d-grid gap-2">
-								<button type="submit" class="btn btn-custom-blue btn-success">Güncelle</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

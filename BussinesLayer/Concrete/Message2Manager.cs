@@ -38,7 +38,7 @@ namespace BussinesLayer.Concrete
 
         public Mesajlar TGetbyId(int id)
         {
-            throw new NotImplementedException();
+            return _messagedal.GetById(id);
         }
 
         public void TRemove(Mesajlar t)
