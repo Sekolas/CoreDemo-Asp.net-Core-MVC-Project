@@ -1,10 +1,10 @@
-﻿@model List<Blog>
+﻿@model List<Mesajlar>
+
 @{
 	ViewData["Title"] = "BlogListByWriter";
 	Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<!DOCTYPE html>
 <html lang="tr">
 <head>
 	<meta charset="UTF-8">
@@ -46,49 +46,39 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mb-4">Yazarın Blogları</h2>
+		<h2 class="mb-4">Gelen Kutusu</h2>
 		<div class="table-responsive">
-			
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Blog Başlığı</th>
-							<th>Oluşturma Tarihi</th>
-							<th>Kategori</th>
-							<th>Durum</th>
-							<th>Sil</th>
-							<th>Düzenle</th>
-						</tr>
-					</thead>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Konu</th>
+						<th>Gönderen</th>
+						<th>Tarih</th>
+						<th>Mesajı aç</th>
+
+					</tr>
+				</thead>
 				<tbody>
 					@foreach (var item in Model)
 					{
 						<tr>
-							<td>@item.BlogId</td>
-							<td>@item.BlogTitle</td>
-							<td>@item.BlogCreateDate</td>
-							<td>@item.Category.CategoryName</td> <!-- CategoryName ekliyoruz -->
-							<td class="status-true">@item.BlogStatus</td>
-							<td>
-								<!-- Silme butonu ile form -->
-								<form asp-action="BlogDelete" method="post">
-									<input type="hidden" name="id" value="@item.BlogId" />
-									<button type="submit" class="btn-delete">Sil</button>
-								</form>
-							</td>
-							<td>
-								<!-- Düzenleme butonu -->
-								<a asp-action="EditBlog"  asp-route-id="@item.BlogId" class="btn-edit">Düzenle</a>
-							</td>
+							<td>@item.MessageID</td>
+							<td>@item.Subject</td>
+							<td>@item.SenderUser.WriterName</td>
+							<td>@(((DateTime)@item.MessageDate).ToString("dd-MMM-yyyy"))</td> <!-- CategoryName ekliyoruz -->
+							<td><a href="/Blog/EditBlog/@item.MessageID" class="btn btn-warning">Mesajı Aç </a></td>
+							
 						</tr>
 					}
 				</tbody>
 
-				</table>
-			
+			</table>
+			<a href="/Blog/BlogAdd" class="btn btn-primary">Yeni mesaj oluştur</a>
+
 		</div>
-			
+
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>

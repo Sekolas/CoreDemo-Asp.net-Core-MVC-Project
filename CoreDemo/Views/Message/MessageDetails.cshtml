@@ -1,10 +1,9 @@
-﻿@model Blog
+﻿@model List<Mesajlar>
+
 @{
-	ViewData["Title"] = "EditBlog";
+	ViewData["Title"] = "BlogListByWriter";
 	Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-
-<!DOCTYPE html>
 <html lang="en">
 <!-- head bölümü aynı kalacak -->
 <body class="bg-light">
@@ -13,10 +12,10 @@
 			<div class="col-md-10 col-lg-10">
 				<div class="card shadow">
 					<div class="card-header custom-header text-white">
-						<h3 class="mb-0">Blog Düzenle</h3>
+						<h3 class="mb-0">Mesaj Detay Sayfası</h3>
 					</div>
 					<div class="card-body">
-						<form asp-action="EditBlog" asp-controller="Blog" method="post">
+						<form >
 							<!-- Gizli BlogId alanı -->
 							<input type="hidden" name="BlogId" value="@Model.BlogId" />
 

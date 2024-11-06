@@ -21,7 +21,10 @@ namespace EntityLayer.concrete
         public string WriterMail { get; set; }
         public string WriterPassword{ get; set; }
 		public List<Blog> Blogs { get; set; }
+        public virtual ICollection<Mesajlar> WriterSender { get; set; }
+        public virtual ICollection<Mesajlar> WriterReceiver { get; set; }
 
 
-	}
+
+    }
 }

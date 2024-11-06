@@ -18,7 +18,16 @@ namespace DataAccesLayer.concrete
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Mesajlar>()
+                .HasOne(x => x.SenderUser)
+                .WithMany(y => y.WriterSender)
+                .HasForeignKey(z => z.SenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+            modelBuilder.Entity<Mesajlar>()
+               .HasOne(x => x.ReceiverUser)
+               .WithMany(y => y.WriterReceiver)
+               .HasForeignKey(z => z.ReceiverId)
+               .OnDelete(DeleteBehavior.ClientSetNull);
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
@@ -28,7 +37,9 @@ namespace DataAccesLayer.concrete
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<Message> Messages{ get; set; }
+        public DbSet<Mesajlar> Mesajlar { get; set; }
+
+
 
 
 

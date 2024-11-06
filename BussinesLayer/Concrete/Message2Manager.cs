@@ -1,6 +1,5 @@
 ﻿using BussinesLayer.Abstract;
 using DataAccesLayer.abstracct;
-using DataAccesLayer.EntityFramework;
 using EntityLayer.concrete;
 using System;
 using System.Collections.Generic;
@@ -10,41 +9,44 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Concrete
 {
-    public class MessageManager : ImessageService
+    public class Message2Manager : IMessage2Service
     {
-        IMessageDal _messageDal;
-        public MessageManager(IMessageDal messagedal)
+        IMessage2Dal _messagedal;
+        public Message2Manager(IMessage2Dal mmessagedal)
         {
-            _messageDal = messagedal;
+            _messagedal = mmessagedal;
             
         }
-        public List<Message> GetAll()
+        public List<Mesajlar> GetAll()
         {
-            return _messageDal.GetListAll();
-        }
+            return _messagedal.GetListAll();
 
-        public List<Message> GetInboxWithByWriter(string p)
-        {
-            return _messageDal.GetListAll(x=>x.Receiver==p);
 
         }
 
-        public void TAdd(Message t)
+        public List<Mesajlar> GetInboxWithByWriter(int id)
         {
-            throw new NotImplementedException();
+            return _messagedal.GetListWithMessageByWriter(id);
+
         }
 
-        public Message TGetbyId(int id)
+
+        public void TAdd(Mesajlar t)
         {
             throw new NotImplementedException();
         }
 
-        public void TRemove(Message t)
+        public Mesajlar TGetbyId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Message t)
+        public void TRemove(Mesajlar t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Mesajlar t)
         {
             throw new NotImplementedException();
         }
