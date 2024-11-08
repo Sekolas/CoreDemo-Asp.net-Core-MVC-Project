@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using DataAccesLayer.concrete;
 
 namespace CoreDemo.Controllers
 {
-	[AllowAnonymous]
 	public class BlogController : Controller
 	{
 		BlogManager bm = new BlogManager(new EfBlogRepository());
@@ -31,7 +31,10 @@ namespace CoreDemo.Controllers
 
 		public IActionResult BlogListByWriter()
 		{
-			var values=bm.Test(2);
+            var usermail = User.Identity.Name;
+            Context c=new Context();
+            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+            var values = bm.Test(writerID);
 			return View(values);
 		}
 		[HttpGet]
@@ -49,6 +52,9 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
             BlogValidatör bv = new BlogValidatör();
             ValidationResult result = bv.Validate(p);
@@ -57,7 +63,7 @@ namespace CoreDemo.Controllers
             {
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString()).ToString();
-                p.WriterID = 2;
+                p.WriterID = writerID;
                 bm.TAdd(p);
                 return RedirectToAction("BlogListByWriter", "Blog");
 
