@@ -1,0 +1,43 @@
+﻿>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<EntityLayer.concrete.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="table-container">
+    <h3>Kategori Listesi</h3>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kategori Adı</th>
+                <th>Pasif Yap</th>
+                <th>Aktif Yap</th>
+                <th>Düzenle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Yazılım</td>
+                <td><button class="btn btn-danger custom-btn">Pasif Yap</button></td>
+                <td><button class="btn btn-warning custom-btn">Aktif Yap</button></td>
+                <td><button class="btn btn-primary custom-btn">Düzenle</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Teknoloji</td>
+                <td><button class="btn btn-danger custom-btn">Pasif Yap</button></td>
+                <td><button class="btn btn-warning custom-btn">Aktif Yap</button></td>
+                <td><button class="btn btn-primary custom-btn">Düzenle</button></td>
+            </tr>
+            <!-- Diğer satırlar -->
+        </tbody>
+    </table>
+    <br/>
+    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+</div>
