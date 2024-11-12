@@ -1,0 +1,25 @@
+﻿
+@model EntityLayer.concrete.Category
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+<form asp-action="AddCategory" asp-controller="Category" method="post">
+    <div class="form-group">
+        <label for="CategoryName">Kategori Adı</label>
+        <input type="text" id="CategoryName" name="CategoryName" class="form-control" />
+        <span asp-validation-for="CategoryName" class="text-danger"> </span>
+    </div>
+
+    <div class="form-group">
+        <label for="CategoryDescription">Kategori Açıklaması</label>
+        <textarea id="CategoryDescription" name="CategoryDescription" rows="3" class="form-control"></textarea>
+        <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-info">Verileri Kaydet</button>
+</form>

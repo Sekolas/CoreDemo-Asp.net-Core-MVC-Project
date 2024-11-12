@@ -1,13 +1,8 @@
-﻿>
-@using X.PagedList
-@using X.PagedList.Mvc.Core
-@model IPagedList<EntityLayer.concrete.Category>
+﻿@model List<EntityLayer.concrete.Category>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
-
 <div class="table-container">
     <h3>Kategori Listesi</h3>
     <table class="table table-bordered text-center">
@@ -21,23 +16,19 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var item in Model)
+            {
             <tr>
-                <td>1</td>
-                <td>Yazılım</td>
-                <td><button class="btn btn-danger custom-btn">Pasif Yap</button></td>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td><a href="/Admin/Category/CategoryDelete/@item.CategoryId" onclick="return confirm('silmek isteğinize emin misiniz')" class="btn btn-danger custom-btn">Pasif Yap</a></td>
                 <td><button class="btn btn-warning custom-btn">Aktif Yap</button></td>
                 <td><button class="btn btn-primary custom-btn">Düzenle</button></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Teknoloji</td>
-                <td><button class="btn btn-danger custom-btn">Pasif Yap</button></td>
-                <td><button class="btn btn-warning custom-btn">Aktif Yap</button></td>
-                <td><button class="btn btn-primary custom-btn">Düzenle</button></td>
-            </tr>
-            <!-- Diğer satırlar -->
+            }
         </tbody>
     </table>
+    <a href="#" class="btn btn-primary">Yeni kategori</a>
     <br/>
-    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+    
 </div>
