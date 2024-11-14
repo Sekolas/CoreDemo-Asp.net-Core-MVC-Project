@@ -362,6 +362,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\statistic\" />
     <Folder Include="wwwroot\WriterImageFiles\" />
   </ItemGroup>
 

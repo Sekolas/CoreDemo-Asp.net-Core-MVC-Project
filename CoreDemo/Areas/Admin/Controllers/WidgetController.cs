@@ -2,10 +2,9 @@
 
 namespace CoreDemo.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class WidgetController : Controller
     {
         [Area("Admin")]
-        [Route("Admin/[controller]/[action]")]
 
         public IActionResult Index()
         {

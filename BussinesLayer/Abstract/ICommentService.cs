@@ -9,9 +9,9 @@ namespace BussinesLayer.Abstract
 {
 	public interface ICommentService
 	{
-		void AddComment(Comment  category);
+		void AddComment(coments  category);
 		//void RemoveCategory(Category category);
 		//void CategoryUpdate(Category category);
-		List<Comment> Getlist(int id);
+		List<coments> Getlist(int id);
 	}
 }

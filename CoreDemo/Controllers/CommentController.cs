@@ -20,7 +20,7 @@ namespace CoreDemo.Controllers
 			return PartialView();
 		}
 		[HttpPost]
-		public IActionResult PartialAddComment(Comment p)
+		public IActionResult PartialAddComment(coments p)
 		{
 			p.CommentDate=DateTime.Parse(DateTime.Now.ToString());
 			p.CommentStatus=true;

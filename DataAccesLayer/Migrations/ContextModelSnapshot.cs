@@ -186,7 +186,7 @@ namespace DataAccesLayer.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("commentss");
                 });
 
             modelBuilder.Entity("EntityLayer.concrete.Contact", b =>

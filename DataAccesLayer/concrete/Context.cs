@@ -29,6 +29,7 @@ namespace DataAccesLayer.concrete
                .HasForeignKey(z => z.ReceiverId)
                .OnDelete(DeleteBehavior.ClientSetNull);
         }
+        public DbSet<coments> comets { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -38,6 +39,8 @@ namespace DataAccesLayer.concrete
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Mesajlar> Mesajlar { get; set; }
+        
+
 
 
 
