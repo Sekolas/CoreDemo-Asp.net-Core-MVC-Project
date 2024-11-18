@@ -39,7 +39,7 @@ namespace DataAccesLayer.concrete
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Mesajlar> Mesajlar { get; set; }
-        
+		public DbSet<Admin> Admins{ get; set; }
 
 
 
@@ -49,5 +49,7 @@ namespace DataAccesLayer.concrete
 
 
 
-    }
+
+
+	}
 }

@@ -5,17 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Areas.Admin.ViewComponents.Statistic
 {
-    public class statistic2:ViewComponent
+    public class statistic2 : ViewComponent
     {
         Context c = new Context();
         BlogManager bm = new BlogManager(new EfBlogRepository());
 
         public IViewComponentResult Invoke()
         {
-           
-
-
-
             return View();
         }
     }
