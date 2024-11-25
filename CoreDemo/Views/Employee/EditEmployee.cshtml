@@ -1,0 +1,15 @@
+﻿@using CoreDemo.Controllers
+@model class1
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Personel Güncelleme Syafası</h2>
+<form method="post">
+	<label>Çalışan ID</label>
+	<input type="text" asp-for="@Model.ID" class="form-control" />
+	<label>Çalışan Adı Soyadı</label>
+	<input type="text" asp-for="@Model.Name" class="form-control" />
+	<br />
+	<button type="submit" class="btn btn-info">Düzenle</button>
+</form>

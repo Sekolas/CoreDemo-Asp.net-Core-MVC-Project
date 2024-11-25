@@ -1,0 +1,29 @@
+﻿@using CoreDemo.Controllers
+@model List<class1>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+	<tr>
+		<th>#</th>
+		<th>Adı Soyadı</th>
+		<th>Sil</th>
+		<th>Düzenle</th>
+
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.ID</td>
+			<td>@item.Name</td>
+			<td><a asp-action="DeleteEmpLoyee" asp-route-id="@item.ID" asp-controller="Employee"  class="btn btn-outline-danger">Sil</a></td>
+			<td><a asp-action ="EditEmployee" asp-route-id="@item.ID" asp-controller="Employee" class="btn btn-outline-success">Düzenle</a></td>
+
+
+		</tr>
+
+	}
+</table>
+<a asp-action="AddEmployee" asp-controller="Employee" class="btn btn-outline-primary">Yeni Çalışan Girişi</a>
