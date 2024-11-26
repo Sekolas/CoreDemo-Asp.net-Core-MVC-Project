@@ -1,39 +1,48 @@
-﻿using DataAccesLayer.concrete;
+﻿using CoreDemo.Models;
+using DataAccesLayer.concrete;
 using EntityLayer.concrete;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace CoreDemo.Controllers
 {
-	public class LoginController : Controller
+    [AllowAnonymous]
+
+    public class LoginController : Controller
 	{
-		[AllowAnonymous]
-			public IActionResult Index() { return View(); }
-		[HttpPost]
-		[AllowAnonymous]
+        private readonly SignInManager<AppUser> _signInManager;
 
-		public async Task<IActionResult> Index(Writer writer)
-		{
-			Context c = new Context();
-			var datavalue = c.Writers.FirstOrDefault(x => x.WriterMail == writer.WriterMail && x.WriterPassword == writer.WriterPassword);
-			if (datavalue != null)
-			{
-				var claims = new List<Claim>()
-				{
-					new Claim(ClaimTypes.Name,writer.WriterMail)
-				};
-				var useridenmtity = new ClaimsIdentity(claims, "a");
-				ClaimsPrincipal user = new ClaimsPrincipal(useridenmtity);
-				await HttpContext.SignInAsync(user);
-				return RedirectToAction("Index", "Dashboard");
-			}
-			else
-			{
-				return View();
-			}
+        public LoginController(SignInManager<AppUser> signInManager)
+        {
+            _signInManager = signInManager;
+        }
 
-		}
-	}
+        public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(UserSignInViewModel p)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password, false, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+            }
+            else { 
+                return View();
+            }
+            return View();
+
+
+        }
+
+
+    }
 }

@@ -1,10 +1,12 @@
 ﻿using CoreDemo.Models;
 using EntityLayer.concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
+	[AllowAnonymous]
 	public class RegisterUserController : Controller
 	{
 
@@ -31,14 +33,14 @@ namespace CoreDemo.Controllers
 					NameSurname = p.NameSurname
 
 				};
-				var result = await _usermanager.CreateAsync(user);
+				var result = await _usermanager.CreateAsync(user,p.Password);
 				if (result.Succeeded)
 				{
-					return RedirectToAction("Index", "Login");
+					return RedirectToAction("Index","Login");
 				}
 				else {
 					foreach (var item in result.Errors) {
-						ModelState.AddModelError("", item.Description);
+						ModelState.AddModelError("", item.Description);	
 					}
 				}
 			}
